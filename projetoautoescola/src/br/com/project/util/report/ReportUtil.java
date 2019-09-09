@@ -8,5 +8,6 @@ public class ReportUtil implements Serializable {
 
 	private static final String UNDERLINE = "_";
 	private static final String FOLDER_RELATORIOS = "/relatorios";
+	private static final String SUBREPORT_DIR = "SUBREPORT_DIR";
 
 }
