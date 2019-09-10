@@ -26,6 +26,12 @@ import net.sf.jasperreports.engine.export.JRXlsExporter;
 import net.sf.jasperreports.engine.export.oasis.JROdtExporter;
 import net.sf.jasperreports.engine.util.JRLoader;
 
+/**
+ * classe responsável por gerar os relatórios
+ * 
+ * @author gilsonalves
+ *
+ */
 @Component
 public class ReportUtil implements Serializable {
 
