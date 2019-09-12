@@ -14,7 +14,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.engine.SessionFactoryImplementor;
 
-import br.com.framework.DAO.implementacao.VariavelConexaoUtil;
+import br.com.framework.implementacao.crud.VariavelConexaoUtil;
 
 /**
  * Classe responsavel por estabelecer conexão entre o hibernate e o Banco

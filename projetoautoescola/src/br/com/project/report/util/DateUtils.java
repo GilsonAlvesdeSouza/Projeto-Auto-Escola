@@ -1,4 +1,4 @@
-package br.com.project.util.report;
+package br.com.project.report.util;
 
 import java.io.Serializable;
 import java.text.DateFormat;

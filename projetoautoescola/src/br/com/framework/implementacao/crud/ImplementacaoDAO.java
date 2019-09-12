@@ -1,4 +1,4 @@
-package br.com.framework.DAO.implementacao;
+package br.com.framework.implementacao.crud;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +14,8 @@ import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.framework.DAOinterface.InterfaceCrud;
 import br.com.framework.hibernate.session.HibernateUtil;
+import br.com.framework.interfac.crud.InterfaceCrud;
 
 /**
  * Classe de Métodos genéricos de Persistência

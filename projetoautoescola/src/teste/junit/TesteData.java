@@ -7,7 +7,7 @@ import java.util.Calendar;
 
 import org.junit.Test;
 
-import br.com.project.util.report.DateUtils;
+import br.com.project.report.util.DateUtils;
 
 public class TesteData {
 	@Test

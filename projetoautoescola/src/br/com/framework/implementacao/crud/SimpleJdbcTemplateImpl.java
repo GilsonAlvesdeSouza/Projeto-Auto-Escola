@@ -1,4 +1,4 @@
-package br.com.framework.DAO.implementacao;
+package br.com.framework.implementacao.crud;
 
 import java.io.Serializable;
 

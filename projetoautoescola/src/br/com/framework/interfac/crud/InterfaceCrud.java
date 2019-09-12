@@ -1,4 +1,4 @@
-package br.com.framework.DAOinterface;
+package br.com.framework.interfac.crud;
 
 import java.io.Serializable;
 import java.util.List;

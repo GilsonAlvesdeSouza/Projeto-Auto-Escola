@@ -1,4 +1,4 @@
-package br.com.project.util.report;
+package br.com.project.report.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
