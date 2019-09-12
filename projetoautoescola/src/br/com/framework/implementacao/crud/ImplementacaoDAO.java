@@ -39,7 +39,7 @@ public class ImplementacaoDAO<T> implements InterfaceCrud<T> {
 	private SimpleJdbcTemplateImpl simpleJdbcTemplate;
 
 	@Autowired
-	private SimpleJdbcInsertImpl simpleJdbcInsert;
+	private SimpleJdbcInsertImplents simpleJdbcInsert;
 
 	@Autowired
 	private SimpleJdbcClassImpl simpleJdbcClass;
