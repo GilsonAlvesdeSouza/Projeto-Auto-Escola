@@ -1,4 +1,4 @@
-package br.com.framework.implementacao.DAO;
+package br.com.framework.DAO.implementacao;
 
 /**
  * Nome do caminho do JNDI datasource tomcat

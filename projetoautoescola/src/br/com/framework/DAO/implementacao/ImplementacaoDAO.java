@@ -1,4 +1,4 @@
-package br.com.framework.implementacao.DAO;
+package br.com.framework.DAO.implementacao;
 
 import java.util.ArrayList;
 import java.util.List;
