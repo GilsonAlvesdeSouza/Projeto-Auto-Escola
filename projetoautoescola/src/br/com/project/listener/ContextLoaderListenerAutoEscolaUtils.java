@@ -15,7 +15,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  *
  */
 @ApplicationScoped
-public class ContextLoaderListenerAutoEcolaUtils extends ContextLoaderListener implements Serializable {
+public class ContextLoaderListenerAutoEscolaUtils extends ContextLoaderListener implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
