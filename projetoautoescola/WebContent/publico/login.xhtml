@@ -13,7 +13,7 @@
 </h:head>
 
 <h:body>
-	<p:growl id="mensagem" />
+	<p:growl id="mensagem" showDetail="true" />
 	<div id="imagemlogin">
 		<h:graphicImage library="img" name="logocaixaaqui.png"
 			styleClass="bordaImagem" />
@@ -21,9 +21,9 @@
 	<div id="keyslogin">
 		<h:graphicImage library="img" name="keys.png" styleClass="bordaImagem" />
 	</div>
-	<div id="formlogin">
-		<br />
-		<h:panelGroup rendered="#{!empty param.login_error}">
+	<div id="formlogin" >
+
+		<h:panelGroup rendered="#{!empty param.login_error}" >
 
 			<!--Motivo: #{SPRING_SECURITY_LAST_EXCEPTION.message}  -->
 
@@ -42,18 +42,20 @@
 			</h:outputLabel>
 		</h:panelGroup>
 
-		<br />
+		
 		<form id="formulario" method="post"
 			onsubmit="return validarSenhaLogin();" name="formulario"
 			action="#{request.contextPath}/j_spring_security_check">
 
-			<span style="display: block; padding-top: 2px; text-align: right">
+			<span style="display: block; padding-top: 2px; text-align: center">
+				<span style="display: inline-block; width: 50px; text-align: center">
+					Login </span> <input type="text" name="j_username" id="j_username"
+				required="" />
+			</span> <span style="display: block; padding-top: 2px; text-align: center">
 				<span style="display: inline-block; width: 50px; text-align: left">
-					Login </span> <input type="text" name="j_username" id="j_username" required="" />
-			</span> <span style="display: block; padding-top: 2px; text-align: right">
-				<span style="display: inline-block; width: 50px; text-align: left">
-					Senha </span> <input type="password" name="j_password" id="j_password" required=""/>
-			</span> <span style="display: block; padding-top: 2px; text-align: right">
+					Senha </span> <input type="password" name="j_password" id="j_password"
+				required="" />
+			</span> <span style="display: block; padding-top: 2px; text-align: center">
 				<span id="enviando"></span>
 				<button type="submit" class="blue"
 					style="height: 40px; width: 100px; background: #CDCDC1; border: 1px;"
