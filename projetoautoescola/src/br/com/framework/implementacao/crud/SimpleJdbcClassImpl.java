@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 public class SimpleJdbcClassImpl extends SimpleJdbcCall implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -8912420246692261757L;
 
 	public SimpleJdbcClassImpl(DataSource dataSource) {
 		super(dataSource);

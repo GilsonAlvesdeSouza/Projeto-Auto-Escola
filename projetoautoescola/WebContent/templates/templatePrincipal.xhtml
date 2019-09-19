@@ -26,7 +26,7 @@
 			id="jsMaskMoneySistema" />
 		<h:outputScript name="jquery.maskedinput.js" library="javascript"
 			id="jsMaskInputSistema" />
-		<h:outputScript name="scripty.js" library="javascript"
+		<h:outputScript name="scripty.js" library="js"
 			id="jsScriptSistema" />
 		<h:outputScript name="jsf.js" library="javax.faces" />
 		<h:outputScript name="googlechart.js" library="javascript" />
@@ -70,33 +70,31 @@
 						<h:graphicImage library="img" name="scool.png" id="logoImg"
 							styleClass="bordaImagem" />
 					</span> 
-					<span id="dadoslogin"> Usuário: #{entidadeBeanView.usuarioLogadoSecurity} </span> 
-					<br id="quebraUser" />
-					Último login:
-					<h:outputLabel value="#{entidadeBeanView.ultimoAcesso}"
-						id="saidaUltimoAcesso">
-						<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss"
-							dateStyle="long" timeStyle="full" timeZone="GMT-03:00" />
-					</h:outputLabel> <br id="quebraUltimoAcesso" />
-					</div>
-					</div>
-					
-						</h:body>
-	</h:form>
-				<!--	<a href="#" id="logoutSuperior"
-						onclick="javascript:logout('#{request.contextPath}');">Sair</a> </span> <span
-						id="menuSistema"
+					<span id="dadoslogin"> Usuário:
+						#{entidadeBeanView.usuarioLogadoSecurity} <br id="quebraUser" />
+						Último login: <h:outputLabel
+							value="#{entidadeBeanView.ultimoAcesso}" id="saidaUltimoAcesso">
+							<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss"
+								dateStyle="long" timeStyle="full" timeZone="GMT-03:00" />
+						</h:outputLabel> <br id="quebraUltimoAcesso" /> 
+						
+						<a href="#" id="logoutSuperior"
+						onclick="javascript:logout('#{request.contextPath}');">Sair</a>
+					</span> 
+					<span id="menuSistema"
 						style="position: absolute; right: 25px; top: 48px; width: 20px">
 						<a href="#" onclick="abrirMenupop()"> <h:graphicImage
 								library="img" name="setabaixo.png" styleClass="bordaImagem"
 								id="imaSetaBaixo" />
 					</a>
 					</span>
-		
+				</div>
+			</div>
 
 	
 
-		<div id="menu">
+
+	<div id="menu">
    				 <span id="iniciarmenu">
    				 <h:graphicImage library="img" name="iconemenu.png"
 						styleClass="bordaImagem" id="iconemenu">
@@ -122,7 +120,13 @@
    			 </a>
   			</div>
   			
-				<div id="barramenu">
+  			
+  		
+  			
+  			
+	
+  			
+			<div id="barramenu">
 					<p:tieredMenu
 						style="width: 185px;border: none;background: none;color: #000;"
 						 id="menuEsquerdo">
@@ -283,21 +287,21 @@
 							ajax="true" />
 					</p:tieredMenu>
 				</div>
-			</div>
+			
 			
 			
 			<p:dialog widgetVar="alterarSenhaDialog" id="alterarSenhaDialog" width="240"
 				modal="true" resizable="false" height="170"
 				header="Alterar senha" appendToBody="false" dynamic="true">
 				
-					<ui:include src="/cadastro/dialog_alterar_senha.xhtml"/>
+				<!--  	<ui:include src="/cadastro/dialog_alterar_senha.xhtml"/>-->
 			</p:dialog>
 			
 			
 			<p:dialog widgetVar="enviarMsgDialog" id="alterarMsgDialog" width="800"
 				modal="true" resizable="false" height="360"
 				header="Enviar menssagem" appendToBody="false" dynamic="true">
-				<ui:include src="/cadastro/dialog_enviar_msg.xhtml"/>
+					<!-- <ui:include src="/cadastro/dialog_enviar_msg.xhtml"/>-->
 			</p:dialog>
 			
 		</h:body>
@@ -324,6 +328,7 @@
 	 <script type="text/javascript" charset="UTF-8">
 		carregarIdElementosPagina();
 		verificaMsgNaoLidas(); 
-	</script> -->
+	</script> 
+	
 </sec:isAuthenticated>
 </html>

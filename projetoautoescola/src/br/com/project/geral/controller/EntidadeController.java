@@ -19,7 +19,7 @@ public class EntidadeController extends ImplementacaoCrud<Entidade> implements I
 	private SrvEntidade srvEntidade;
 
 	public Entidade findUserLogado(String userLogado) throws Exception {
-		return super.findInuqueBYProperty(Entidade.class, userLogado, "entLogin", "and entity.entAtivo is false");
+		return super.findUninqueByProperty(Entidade.class, userLogado, "entLogin", "and entity.entInativo is false");
 	}
 
 	public Date getUltimoAcessoEntidadeLogada(String login) {
