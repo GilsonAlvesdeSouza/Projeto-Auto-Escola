@@ -61,4 +61,11 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 		return url;
 	}
 
+	@Override
+	public void excluir() throws Exception {
+		cidadeController.delete(cidade);
+		novo();
+		getCidades();
+	}
+
 }

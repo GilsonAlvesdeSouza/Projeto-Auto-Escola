@@ -51,6 +51,7 @@
 		</h:form>
 		<br />
 
+		
 		<p:panel style="text-align: center" header="Listagem de Cidades"
 			id="painelTable">
 			<p:dataTable id="tableResult" value="#{cidadeBeanView.cidades}"
@@ -77,28 +78,28 @@
 					</center>
 				</p:column>
 
-				<p:column headerText="Opções">
+				<p:column>
 					<center>
-
-						<!-- Lixeira -->
-						<!--	<p:commandButton icon="ui-icon-trash" title="Remover"
-							action="#{cidadeBeanView.excluir}" update="">
-							<p:confirm header="Atenção"
-								message="Tem certeza que deseja excluir os dados?"
-								icon="ui-icon-alert" />
-							<f:attribute name="cidadeSelecionado" value="#{objeto}" />
-						</p:commandButton>-->
-
 						<f:facet name="header">Editar   </f:facet>
-						<p:commandLink action="#{cidadeBeanView.editar}"
-							id="excluirCidade" value="Editar" ajax="true" immediate="true">
+						<p:commandLink action="#{cidadeBeanView.editar}" id="editarCidade"
+							value="Editar" ajax="true" immediate="true">
 							<f:setPropertyActionListener value="#{cidade}"
 								target="#{cidadeBeanView.cidade}" />
 						</p:commandLink>
-						
-						
+					</center>
+				</p:column>
 
-
+				<p:column>
+					<center>
+						<f:facet name="header">Excluir   </f:facet>
+						<p:commandLink action="#{cidadeBeanView.excluir}" update="tableResult"
+							id="excluirCidade" value="Excluir" ajax="true" immediate="true">
+							<p:confirm header="Atenção"
+								message="Tem certeza que deseja excluir os dados?"
+								icon="ui-icon-alert" />
+							<f:setPropertyActionListener value="#{cidade}"
+								target="#{cidadeBeanView.cidade}" />
+						</p:commandLink>
 					</center>
 				</p:column>
 			</p:dataTable>
@@ -110,6 +111,7 @@
 					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
 			</p:confirmDialog>
 		</p:panel>
+	
 	</ui:define>
 </ui:composition>
 </html>
