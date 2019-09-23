@@ -9,4 +9,5 @@
 		antiJARLocking="false" antiResourceLocking="false" username="postgres"
 		password="12345678"
 		url="jdbc:postgresql://localhost:5432/auto_escola?autoReconect=true" />
-</Context>
+
+	</Context>

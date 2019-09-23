@@ -1,5 +1,7 @@
 package br.com.project.geral.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -19,4 +21,9 @@ public class CidadeController extends ImplementacaoCrud<Cidade> implements Inter
 
 	@Autowired
 	private RepositoryCidade repositoryCidade;
+
+	public List<Cidade> getListCidade() throws Exception {
+		List<Cidade> cidades = super.findListQueryDinamic("from Cidade order by descricao");
+		return cidades;
+	}
 }

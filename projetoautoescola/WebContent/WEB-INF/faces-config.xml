@@ -25,8 +25,10 @@
 		<navigation-handler>org.primefaces.application.DialogNavigationHandler</navigation-handler>
 		<view-handler>org.primefaces.application.DialogViewHandler</view-handler>
 
-	</application>
 	
+	</application>
+
+
 	<factory>
 		<exception-handler-factory>br.com.project.exception.CustomExceptionHandlerFactory</exception-handler-factory>
 	</factory>
