@@ -231,7 +231,7 @@ a:focus {
 
 #keyslogin {
 	position: absolute;
-	bottom: 50px;
+	bottom: 35px;
 	right: 240px;
 	z-index: 999;
 }
@@ -240,7 +240,7 @@ a:focus {
 	position: absolute;
 	bottom: 60px;
 	right: 60px;
-	left: px;
+	left: 0px;
 	background-color: #e5e5e5;
 	display: block;
 	-webkit-border-top-right-radius: 8px;
@@ -386,7 +386,7 @@ input[type=submit] {
 }
 
 .bordaImagem {
-	border: 0px;
+	border: 0;
 }
 
 .espacoBranco {
@@ -589,4 +589,3 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 .ui-datatable thead th,.ui-datatable tbody td {
 	border: 1px solid white !important; 
 }
-

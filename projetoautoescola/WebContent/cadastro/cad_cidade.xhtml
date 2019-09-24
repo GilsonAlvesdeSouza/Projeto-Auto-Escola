@@ -11,7 +11,7 @@
 <ui:composition template="/templates/templatePrincipal.xhtml">
 	<ui:define name="corpo">
 		<h:form id="formCadastro" prependId="false">
-			<c:set var="isCadastro" value="true" scope="session" />
+			<c:set var="isCadastro" value="true" scope="request" />
 			<p:panel header="Cadastro de Cidade" id="panelCadastro">
 
 				<p:panelGrid id="gridCidade" columns="3">
@@ -42,106 +42,40 @@
 					<p:message for="estado" />
 				</p:panelGrid>
 			</p:panel>
-			<br />
-			<p:commandButton value="Salvar" ajax="false"
-				action="#{cidadeBeanView.save}" update=":formTemplate:painelTable" />
-			<p:commandButton value="Novo" ajax="false" imediate="true"
-				action="#{cidadeBeanView.novo}" />
-			<br />
+
+			<div class="espacoBranco" />
+
+			<util:botoesCrud managedBeanView="#{cidadeBeanView}"
+				camposReload=":msg, :formTemplate:tableResult :formTemplate:formCadastro"
+				botaoNovo="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')}"
+				botaoSalvar="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')and cidadeBeanView.cidade.id == null}"
+				botaoAtualizar="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')and cidadeBeanView.cidade.id != null}">
+
+			</util:botoesCrud>
+
 		</h:form>
-		<br />
 
-		
-		<p:panel style="text-align: center" header="Listagem de Cidades"
-			id="painelTable">
-			<p:dataTable id="tableResult" value="#{cidadeBeanView.cidades}"
-				var="cidade" rows="10" paginatorPosition="bottom" paginator="true"
-				emptyMessage="Não existem valores para exibição.">
-				<p:column style="width:100px;">
-					<center>
-						<f:facet name="header">Código</f:facet>
-						<h:outputText value="#{cidade.id}" />
-					</center>
-				</p:column>
-
-				<p:column headerText="Nome" filterBy="#{cidade.descricao}">
-					<center>
-
-						<h:outputText value="#{cidade.descricao}" />
-					</center>
-				</p:column>
-
-				<p:column>
-					<center>
-						<f:facet name="header">Estado</f:facet>
-						<h:outputText value="#{cidade.estado.descricao}" />
-					</center>
-				</p:column>
-
-				<p:column>
-					<center>
-						<f:facet name="header">Editar   </f:facet>
-						<p:commandLink action="#{cidadeBeanView.editar}" id="editarCidade"
-							value="Editar" ajax="true" immediate="true">
-							<f:setPropertyActionListener value="#{cidade}"
-								target="#{cidadeBeanView.cidade}" />
-						</p:commandLink>
-					</center>
-				</p:column>
-
-				<p:column>
-					<center>
-						<f:facet name="header">Excluir   </f:facet>
-						<p:commandLink action="#{cidadeBeanView.excluir}" update="tableResult"
-							id="excluirCidade" value="Excluir" ajax="true" immediate="true">
-							<p:confirm header="Atenção"
-								message="Tem certeza que deseja excluir os dados?"
-								icon="ui-icon-alert" />
-							<f:setPropertyActionListener value="#{cidade}"
-								target="#{cidadeBeanView.cidade}" />
-						</p:commandLink>
-					</center>
-				</p:column>
-			</p:dataTable>
-			<!-- Dialogo de confirmação -->
-			<p:confirmDialog global="true">
-				<p:commandButton value="Não" type="button"
-					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-				<p:commandButton value="Sim" type="button"
-					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-			</p:confirmDialog>
-		</p:panel>
-	
-	</ui:define>
-</ui:composition>
-</html>
-<!-- 	<div class="espacoBranco" />
-
-	 	<util:botoesCrud managedBeanView="#{cidadeBeanView}"
-				camposReload=":formTemplate:msg, tableResult" 
-				botaoNovo = "#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')}"
-				botaoSalvar = "#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN') and cidadeBeanView.objetoSelecionado.cid_codigo == null}"
-				botaoAtualizar = "#{contextoBean.possuiAcesso('CIDADE_EDITAR', 'ADMIN') and cidadeBeanView.objetoSelecionado.cid_codigo != null}"
-				botaoExcluir = "#{contextoBean.possuiAcesso('CIDADE_EXCLUIR', 'ADMIN')}"/> 
-		</h:form>
-		
 		<script type="text/javascript" charset="UTF-8">
 			addFocoAoCampo('cidadeNome');
 			gerenciaTeclaEnter();
 		</script>
-		
+
 		<div class="espacoBranco" />
-		
-		<p:dataTable id="tableResult" value="#{cidadeBeanView.cidades}" rendered="#{cidadeBeanView.cidades.cidades.size() > 0}"
-			var="objeto" rows="10" paginatorPosition="bottom" paginator="true"
-			emptyMessage="Não existem valores para exibição."
-			lazy="true"
-			paginatorTemplate=" {FirstPageLink}
+
+		<p:panel style="text-align: center" header="Listagem de Cidades"
+			id="painelTable">
+			<p:dataTable id="tableResult" value="#{cidadeBeanView.cidades}"
+				var="cidade" rows="10" paginatorPosition="bottom" paginator="true"
+				emptyMessage="Não existem valores para exibição."
+				rendered="#{cidadeBeanView.cidades.size() > 0}"
+				paginatorTemplate=" {FirstPageLink}
 								   {PreviousPageLink} {PageLinks} 
 	 							   {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
-
-			  <ui:include src="/resources/components/colunasDataTableCidade.xhtml" /> 
-		</p:dataTable>
+				<ui:include src="/resources/components/colunasDataTableCidade.xhtml" />
+			</p:dataTable>
+			
+		</p:panel>
+		
 	</ui:define>
 </ui:composition>
-</html>-->
+</html>
