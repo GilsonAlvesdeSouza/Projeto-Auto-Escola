@@ -7,81 +7,74 @@
 	xmlns:util="http://java.sun.com/jsf/composite/components"
 	xmlns:sec="http://www.springframework.org/security/facelets/tags"
 	xmlns:composite="http://java.sun.com/jsf/composite">
-	
+
 <composite:interface name="botoesCrud">
 	<composite:attribute name="managededBeanView" required="true" />
 	<composite:attribute name="camposReload" required="false" />
 	<composite:attribute name="tipoEntidadeTemp" required="false" />
-	<composite:attribute name="botaoNovo" required="false" default="true" />	
-	<composite:attribute name="botaoSalvar" required="false" default="true" />	
-	<composite:attribute name="botaoExcluir" required="false" default="true" />	
-	<composite:attribute name="botaoAtualizar" required="false" default="true" />	
+	<composite:attribute name="botaoNovo" required="false" default="true" />
+	<composite:attribute name="botaoSalvar" required="false" default="true" />
+	<composite:attribute name="botaoExcluir" required="false" default="true" />
+		default="true" />
+	<composite:attribute name="botaoAtualizar" required="false"
+		default="true" />
 </composite:interface>
 
-  <composite:implementation>
+<composite:implementation>
 
-	<p:commandButton value="Novo"  style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"
-	        rendered="#{cc.attrs.botaoNovo}"
-			action="#{cc.attrs.managedBeanView.novo}"
-			ajax="true" 
-			id="buttonNovo"
-			immediate="true" 
-			update="#{cc.attrs.camposReload}">
-			<!--<h:inputHidden binding="#{cc.attrs.managedBeanView.htmlInputHidden}" value="#{cc.attrs.tipoEntidadeTemp}">
+	<p:commandButton value="Novo"
+		style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"
+		rendered="#{cc.attrs.botaoNovo}"
+		action="#{cc.attrs.managedBeanView.novo}" ajax="true" id="buttonNovo"
+		immediate="true" update="#{cc.attrs.camposReload}">
+		<!--<h:inputHidden binding="#{cc.attrs.managedBeanView.htmlInputHidden}" value="#{cc.attrs.tipoEntidadeTemp}">
 				<f:attribute name="tipoEntidadeTemp" value="#{cc.attrs.tipoEntidadeTemp}"/>
 			</h:inputHidden>-->
 	</p:commandButton>
 
-	<p:commandButton value="Salvar" style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"
-	    rendered="#{cc.attrs.botaoSalvar}"
-		actionListener="#{cc.attrs.managedBeanView.save}" 
-		ajax="false"
-		partialSubmit="true"
-		process="@this, @form"
-		id="buttonSalvar"
-		immediate="false" 
-		update="#{cc.attrs.camposReload}" >
-	<!--	<h:inputHidden binding="#{cc.attrs.managedBeanView.htmlInputHidden}" value="#{cc.attrs.tipoEntidadeTemp}">
+	<p:commandButton value="Salvar"
+		style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"
+		rendered="#{cc.attrs.botaoSalvar}"
+		actionListener="#{cc.attrs.managedBeanView.saveNotReturn}"
+		ajax="false" partialSubmit="true" process="@this, @form"
+		id="buttonSalvar" immediate="false" update="#{cc.attrs.camposReload}">
+
+		<!--	<h:inputHidden binding="#{cc.attrs.managedBeanView.htmlInputHidden}" value="#{cc.attrs.tipoEntidadeTemp}">
 			<f:attribute name="tipoEntidadeTemp" value="#{cc.attrs.tipoEntidadeTemp}"/>
 		</h:inputHidden>-->
-	</p:commandButton> 
-	
-	<p:commandButton value="Atualizar" style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"
-	    rendered="#{cc.attrs.botaoAtualizar}"
-		actionListener="#{cc.attrs.managedBeanView.saveEdit}" 
-		ajax="false"
-		partialSubmit="true"
-		process="@this, @form"
-		id="buttonAtualizar"
-		immediate="false" 
-		update="#{cc.attrs.camposReload}" >
+	</p:commandButton>
+
+	<p:commandButton value="Atualizar"
+		style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"
+		rendered="#{cc.attrs.botaoAtualizar}"
+		actionListener="#{cc.attrs.managedBeanView.saveEdit}" ajax="false"
+		partialSubmit="true" process="@this, @form" id="buttonAtualizar"
+		immediate="false" update="#{cc.attrs.camposReload}">
 		<!--<h:inputHidden binding="#{cc.attrs.managedBeanView.htmlInputHidden}" value="#{cc.attrs.tipoEntidadeTemp}">
 			<f:attribute name="tipoEntidadeTemp" value="#{cc.attrs.tipoEntidadeTemp}"/>
 		</h:inputHidden>-->
 	</p:commandButton>
 
-	<!--<p:commandButton value="Excluir" style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"
-	    rendered="#{cc.attrs.botaoExcluir}"
-		actionListener="#{cc.attrs.managedBeanView.excluir}" 
-		ajax="false"
-		id="buttonExcluir"
-		immediate="false" 
-		update="#{cc.attrs.camposReload}">
-		<h:inputHidden binding="#{cc.attrs.managedBeanView.htmlInputHidden}" value="#{cc.attrs.tipoEntidadeTemp}">
+	<p:commandButton value="Excluir"
+		style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"
+		rendered="#{cc.attrs.botaoExcluir}"
+		actionListener="#{cc.attrs.managedBeanView.excluir}" ajax="false"
+		id="buttonExcluir" immediate="false" update="#{cc.attrs.camposReload}">
+		
+		<!--   <h:inputHidden binding="#{cc.attrs.managedBeanView.htmlInputHidden}" value="#{cc.attrs.tipoEntidadeTemp}">
 			<f:attribute name="tipoEntidadeTemp" value="#{cc.attrs.tipoEntidadeTemp}"/>
-		</h:inputHidden>
+		</h:inputHidden>-->
 	</p:commandButton>
 
-	<p:commandButton value="Cancelar" style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"
+	<p:commandButton value="Cancelar"
+		style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"
 		action="#{cc.attrs.managedBeanView.redirecionarFindEntidade}"
-		ajax="false" 
-		id="buttonConsultar"
-		immediate="true"  
-		update="#{cc.attrs.camposReload}" >
-		<h:inputHidden binding="#{cc.attrs.managedBeanView.htmlInputHidden}" value="#{cc.attrs.tipoEntidadeTemp}">
+		ajax="false" id="buttonConsultar" immediate="true"
+		update="#{cc.attrs.camposReload}">
+		<!--  <h:inputHidden binding="#{cc.attrs.managedBeanView.htmlInputHidden}" value="#{cc.attrs.tipoEntidadeTemp}">
 			<f:attribute name="tipoEntidadeTemp" value="#{cc.attrs.tipoEntidadeTemp}"/> 
-		</h:inputHidden>
-	</p:commandButton>-->
+		</h:inputHidden>-->
+	</p:commandButton>
 
-</composite:implementation> 
+</composite:implementation>
 </html>

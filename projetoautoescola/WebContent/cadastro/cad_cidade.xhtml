@@ -10,8 +10,12 @@
 
 <ui:composition template="/templates/templatePrincipal.xhtml">
 	<ui:define name="corpo">
+		<h:commandLink immediate="true">
+			<p:fileDownload value="#{cidadeBenView.getArquivoReport}" />
+			<p:graphicImage library="img" name="pdf.png"/>
+		</h:commandLink>
 		<h:form id="formCadastro" prependId="false">
-			<c:set var="isCadastro" value="true" scope="request" />
+			<c:set var="isCadastro" value="true" scope="view" />
 			<p:panel header="Cadastro de Cidade" id="panelCadastro">
 
 				<p:panelGrid id="gridCidade" columns="3">
@@ -46,10 +50,10 @@
 			<div class="espacoBranco" />
 
 			<util:botoesCrud managedBeanView="#{cidadeBeanView}"
-				camposReload=":msg, :formTemplate:tableResult :formTemplate:formCadastro"
+				camposReload=":formTemplate:tableResult :formTemplate:formCadastro:panelCadastro :msg"
 				botaoNovo="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')}"
 				botaoSalvar="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')and cidadeBeanView.cidade.id == null}"
-				botaoAtualizar="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')and cidadeBeanView.cidade.id != null}">
+				botaoAtualizar="#{contextoBean.possuiAcesso('CIDADE_EDITAR', 'ADMIN')and cidadeBeanView.cidade.id != null}">
 
 			</util:botoesCrud>
 
@@ -67,15 +71,15 @@
 			<p:dataTable id="tableResult" value="#{cidadeBeanView.cidades}"
 				var="cidade" rows="10" paginatorPosition="bottom" paginator="true"
 				emptyMessage="Não existem valores para exibição."
-				rendered="#{cidadeBeanView.cidades.size() > 0}"
+				rendered="#{cidadeBeanView.cidades.size() >= 0}"
 				paginatorTemplate=" {FirstPageLink}
 								   {PreviousPageLink} {PageLinks} 
 	 							   {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 				<ui:include src="/resources/components/colunasDataTableCidade.xhtml" />
 			</p:dataTable>
-			
+
 		</p:panel>
-		
+
 	</ui:define>
 </ui:composition>
 </html>

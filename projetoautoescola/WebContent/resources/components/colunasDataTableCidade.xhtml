@@ -16,7 +16,7 @@
 	</center>
 </p:column>
 
-<p:column headerText="Nome" filterBy="#{cidade.descricao}">
+<p:column headerText="Nome">
 	<center>
 
 		<h:outputText value="#{cidade.descricao}" />
@@ -33,9 +33,10 @@
 <p:column headerText="Opções" style="width:100px;">
 	<center>
 		<!-- Lápis -->
-		<sec:ifAnyGranted roles="CIDADE_EXCLUIR, ADMIN">
+		<sec:ifAnyGranted roles="CIDADE_EDITAR, ADMIN">
 			<p:commandButton action="#{cidadeBeanView.editar}" id="editarCidade"
-				icon="ui-icon-pencil" title="Editar" ajax="true" immediate="true">
+				icon="ui-icon-pencil" title="Editar" ajax="true" immediate="true"
+				update=":formTemplate:formCadastro:panelCadastro">
 				<f:setPropertyActionListener value="#{cidade}"
 					target="#{cidadeBeanView.cidade}" />
 			</p:commandButton>
@@ -43,13 +44,13 @@
 
 		<!-- Lixeira -->
 
-		<sec:ifAnyGranted roles="CIDADE_EDITAR, ADMIN">
+		<sec:ifAnyGranted roles="CIDADE_EXCLUIR, ADMIN">
 			<c:choose>
 				<c:when test="${isCadastro == false}">
 					<p:commandButton action="#{cidadeBeanView.excluir}"
 						style="margin-left: 10px;" icon="ui-icon-trash"
-						update="tableResult" id="excluirCidade" title="Excluir"
-						ajax="false" immediate="true">
+						update="tableResult" id="excluirCidade" title="" ajax="false"
+						immediate="true">
 						<p:confirm header="Atenção"
 							message="Tem certeza que deseja excluir os dados?"
 							icon="ui-icon-alert" />
@@ -58,9 +59,9 @@
 					</p:commandButton>
 				</c:when>
 				<c:otherwise>
-					<p:commandButton action="#{cidadeBeanView.excluir}"
-						style="margin-left: 10px;" icon="ui-icon-trash"
-						update="tableResult :msg" id="excluirCidade" title="Excluir"
+					<p:commandButton action="#{cidadeBeanView.excluir}" title=""
+						alt="excluir" style="margin-left: 10px;" icon="ui-icon-trash"
+						update=":formTemplate:tableResult :msg :formTemplate:formCadastro:panelCadastro" id="excluirCidade"
 						ajax="true" immediate="true">
 						<p:confirm header="Atenção"
 							message="Tem certeza que deseja excluir os dados?"
