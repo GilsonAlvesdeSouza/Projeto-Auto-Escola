@@ -23,7 +23,6 @@ import br.com.project.model.classes.Cidade;
 public class CidadeBeanView extends BeanManagedViewAbstract {
 
 	private static final long serialVersionUID = 1L;
-
 	private Cidade cidade = new Cidade();
 	private List<Cidade> cidades = new ArrayList<>();
 	private String url = "/cadastro/cad_cidade.jsf?faces-redirect=true";

@@ -1,7 +1,5 @@
 package br.com.project.bean.view;
 
-import java.io.Serializable;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -23,10 +21,9 @@ import br.com.srv.interfaces.SrvLogin;
 @Controller
 @Scope(value = "request")
 @ManagedBean(name = "loginBeanView")
-public class LoginBeanView extends BeanManagedViewAbstract implements Serializable {
+public class LoginBeanView extends BeanManagedViewAbstract {
 
 	private static final long serialVersionUID = 1L;
-
 	private String userName;
 	private String password;
 	@Autowired

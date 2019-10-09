@@ -1,6 +1,5 @@
 package br.com.project.bean.view;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -17,10 +16,9 @@ import br.com.project.model.classes.Estado;
 @Controller
 @Scope(value = "session")
 @ManagedBean(name = "estadoBeanView")
-public class EstadoBeanView extends BeanManagedViewAbstract implements Serializable {
+public class EstadoBeanView extends BeanManagedViewAbstract {
 
 	private static final long serialVersionUID = 1L;
-
 	@Autowired
 	private EstadoController estadoController;
 
