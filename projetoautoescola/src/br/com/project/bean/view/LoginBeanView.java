@@ -1,5 +1,7 @@
 package br.com.project.bean.view;
 
+import java.io.Serializable;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -21,7 +23,7 @@ import br.com.srv.interfaces.SrvLogin;
 @Controller
 @Scope(value = "request")
 @ManagedBean(name = "loginBeanView")
-public class LoginBeanView extends BeanManagedViewAbstract {
+public class LoginBeanView extends BeanManagedViewAbstract implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -49,8 +51,10 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 	}
 
 	@RequestMapping(value = "**/invalidar_session", method = RequestMethod.POST)
-	public void invalidarSessao(HttpServletRequest httpServletRequest) throws Exception {
+	public void invalidateSessionContrala(HttpServletRequest httpServletRequest) throws Exception {
+
 		String userLogadoSessao = null;
+
 		if (httpServletRequest.getUserPrincipal() != null) {
 			userLogadoSessao = httpServletRequest.getUserPrincipal().getName();
 		}
@@ -59,10 +63,8 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 			userLogadoSessao = httpServletRequest.getRemoteUser();
 		}
 
-		if (userLogadoSessao != null && !userLogadoSessao.isEmpty()) {
+		if (userLogadoSessao != null && !userLogadoSessao.isEmpty())
 			sessionController.invalidateSession(userLogadoSessao);
-		}
-
 	}
 
 	/**
@@ -71,22 +73,21 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 	 * @param actionEvent
 	 * @throws Exception
 	 */
-	public void invalidar(ActionEvent actionEvent) throws Exception {
+	public void invalidar(ActionEvent event) throws Exception {
 		RequestContext context = RequestContext.getCurrentInstance();
+		FacesMessage message = null;
 		boolean loggedIn = false;
-		FacesMessage msg = null;
 
 		if (srvLogin.autentico(getUserName(), getPassword())) {
 			sessionController.invalidateSession(getUserName());
 			loggedIn = true;
 		} else {
 			loggedIn = false;
-			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Acesso negado!", "Login ou senha icorretos.");
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Acesso negado, login ou senha incorretos.", "");
 		}
 
-		if (msg != null) {
-			FacesContext.getCurrentInstance().addMessage("msg", msg);
-		}
+		if (message != null)
+			FacesContext.getCurrentInstance().addMessage("msg", message);
 
 		context.addCallbackParam("loggedIn", loggedIn);
 	}

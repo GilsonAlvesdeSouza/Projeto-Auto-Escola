@@ -1,5 +1,6 @@
 package br.com.project.bean.view;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
@@ -16,7 +17,7 @@ import br.com.project.model.classes.Entidade;
 @Controller
 @Scope(value = "session")
 @ManagedBean(name = "entidadeBeanView")
-public class EntidadeBeanView extends BeanManagedViewAbstract {
+public class EntidadeBeanView extends BeanManagedViewAbstract implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

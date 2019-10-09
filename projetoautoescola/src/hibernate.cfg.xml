@@ -46,8 +46,6 @@
          
          <listener class="org.hibernate.envers.event.AuditEventListener"
          type="pre-collection-remove"/>
-
-		
         
 	</session-factory>
 </hibernate-configuration>	

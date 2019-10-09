@@ -21,7 +21,11 @@ import br.com.project.model.classes.Entidade;
 @Component(value = "contextoBean") // essa anotação permite a classe ser usada em qualquer lugar do sistema
 public class ContextoBean implements Serializable {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
+
 	private static final String USER_LOGADO_SESSAO = "userLogadoSessao";
 
 	@Autowired

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.3.0  -->
-<!-- 2019-10-01T10:39:09 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="babf8eb5-6084-417c-bf13-31d98a929ac0">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-	<parameter name="REPORT_PARAMTERS_IMG" class="java.lang.String"/>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 5.5.0  -->
+<!-- 2019-10-04T13:14:59 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="default" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="f5cb127e-15e8-4144-b2a2-e20639b2161e">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="autoescola"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -11,26 +10,32 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="115" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<staticText>
-				<reportElement x="50" y="27" width="235" height="30" uuid="5f462f59-13d6-42eb-8a60-9c701e214ea2"/>
+				<reportElement x="60" y="0" width="385" height="30" uuid="c4659423-a8eb-4d2c-9f6e-952f271a0c1f"/>
 				<textElement>
 					<font size="20"/>
 				</textElement>
-				<text><![CDATA[Relátorio não disponivel]]></text>
+				<text><![CDATA[Deu certo também]]></text>
 			</staticText>
-			<image>
-				<reportElement x="310" y="17" width="240" height="50" uuid="454b7e42-32c9-4101-ac3e-0f4e0456cef9"/>
-				<imageExpression><![CDATA[$P{REPORT_PARAMTERS_IMG} + "leaf_banner_violet.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
 	<summary>
-		<band height="36" splitType="Stretch">
-			<textField pattern="MMMMM dd, yyyy">
-				<reportElement x="430" y="6" width="120" height="24" uuid="54c1855d-552c-40f0-91a5-278687672495"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="42" splitType="Stretch"/>
 	</summary>
 </jasperReport>

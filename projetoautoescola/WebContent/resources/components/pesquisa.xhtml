@@ -9,7 +9,18 @@
 	xmlns:util="http://java.sun.com/jsf/composite/components"
 	xmlns:composite="http://java.sun.com/jsf/composite">
 <h:form id="formPesquisa" prependId="false">
-		<composite:interface displayName="interfacePesquisa" name="interfacePesquisa">
+	<composite:interface displayName="interfacePesquisa"
+		name="interfacePesquisa">
+		<composite:attribute name="managedBeanView" required="true" />
+	</composite:interface>
+
+	<composite:implementation>
+		<c:set var="isCadastro" value="false" scope="view" />
+		<util:menuImpressao bean="#{cidadeBeanView}">
+		</util:menuImpressao>
+	</composite:implementation>
+
+	<!--   <composite:interface displayName="interfacePesquisa" name="interfacePesquisa">
 			<composite:attribute name="managedBeanView" required="true" />
 			<composite:attribute name="tipoEntidadeTemp" required="false" />
 			<composite:attribute name="tipoTituloEmAberto" required="false" />
@@ -165,6 +176,6 @@
 		}
 		
 	</script>
-  </composite:implementation>
+  </composite:implementation>-->
 </h:form>
 </html>

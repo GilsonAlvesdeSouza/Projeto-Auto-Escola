@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context reloadable="true">
 	<Resource name="jdbc/datasource" auth="Container"
-		type="javax.sql.DataSource" defaultAutoCommit="false" maxActive="50"
-		maxIdle="10" maxWhait="10" initalSize="10"
-		driverClassName="org.postgresql.Driver" validationQuery="Select 'OK'"
+		type="javax.sql.DataSource" defaultAutoCommit='false' maxActive="50"
+		maxIdle="10" maxWhait="10" initialSize="10"
+		driverClassName="org.postgresql.Driver" validationQuery="SELECT 'OK'"
 		testWhileIdle="true" testOnBorrow="true" numTestsPerEvictionRun="5"
-		timeBetweenEvictionRumMillis="5000" minEvictableIdleTimeMillis="60000"
-		antiJARLocking="false" antiResourceLocking="false" username="postgres"
+		timeBetweenEvictionRunsMillis="5000"
+		minEvictableIdleTimeMillis="60000" antiJARLocking="false"
+		antiResourceLocking="false" username="postgres"
 		password="12345678"
 		url="jdbc:postgresql://localhost:5432/auto_escola?autoReconect=true" />
+		
+		
 
 	</Context>
+	

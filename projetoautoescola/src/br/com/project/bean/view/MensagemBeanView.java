@@ -1,5 +1,7 @@
 package br.com.project.bean.view;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 
 import org.springframework.context.annotation.Scope;
@@ -11,7 +13,7 @@ import br.com.project.bean.geral.BeanManagedViewAbstract;
 @Controller
 @Scope(value = "session")
 @ManagedBean(name = "mensagemBeanView")
-public class MensagemBeanView extends BeanManagedViewAbstract {
+public class MensagemBeanView extends BeanManagedViewAbstract implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

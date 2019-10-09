@@ -1,5 +1,6 @@
 package br.com.project.bean.view;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -24,7 +25,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	private static final long serialVersionUID = 1L;
 
 	private Cidade cidade = new Cidade();
-	private List<Cidade> cidades;
+	private List<Cidade> cidades = new ArrayList<>();
 	private String url = "/cadastro/cad_cidade.jsf?faces-redirect=true";
 	private String urlFind = "/cadastro/find_cidade.jsf?faces-redirect=true";
 	@Autowired
@@ -45,6 +46,9 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public StreamedContent getArquivoReport() throws Exception {
+		super.setNomeRelatorioJasper("report_cidade");
+		super.setNomeRelatorioSaida("relatório_cidades");
+		super.setListDataBeanCollectionReport(cidadeController.findList(getClassImplement()));
 		return super.getArquivoReport();
 	}
 
