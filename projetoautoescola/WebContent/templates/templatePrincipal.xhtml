@@ -195,7 +195,7 @@
 
 
 							<sec:ifAnyGranted roles="CIDADE_ACESSAR, ADMIN">
-								<p:menuitem value="Cidade" id="menuCidade"
+								<p:menuitem value="Cidade" id="menuCidade" immediate="true"
 									action="#{cidadeBeanView.redirecionarFindEntidade}">
 								</p:menuitem>
 							</sec:ifAnyGranted>
@@ -334,6 +334,17 @@
 		carregarIdElementosPagina();
 		verificaMsgNaoLidas(); 
 	</script>-->
+	<script type="text/javascript" charset="UTF-8">
+		//função que desabilita o F5
+		carregarIdElementosPagina();
+		window.onkeydown = function(e){
+			if(e.keycode ===116 || e.keycode === 82){
+				e.keycode = 0;
+				e.returnValue = false;
+				return false;
+			}
+		}	
+	</script>
 
 </sec:isAuthenticated>
 </html>

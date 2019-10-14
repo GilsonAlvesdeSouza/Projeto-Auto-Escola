@@ -36,7 +36,7 @@
 		<sec:ifAnyGranted roles="CIDADE_EDITAR, ADMIN">
 			<p:commandButton action="#{cidadeBeanView.editar}" id="editarCidade"
 				icon="ui-icon-pencil" title="Editar" ajax="true" immediate="true"
-				update=":formTemplate:formCadastro:panelCadastro">
+				update="@form">
 				<f:setPropertyActionListener value="#{cidade}"
 					target="#{cidadeBeanView.cidade}" />
 			</p:commandButton>

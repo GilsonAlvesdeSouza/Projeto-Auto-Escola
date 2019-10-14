@@ -10,12 +10,14 @@
 
 <ui:composition template="/templates/templatePrincipal.xhtml">
 	<ui:define name="corpo">
-		<util:pesquisa manegedeBeanView="#{cidadeBeanView}">
-		
+		<util:pesquisa managedBeanView="#{cidadeBeanView}"
+			menuImpressao="true" ocultaNovo="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')}"
+			nomePesquisa="Pesquisa de Cidades" colunasGridDataTableCidades="/resources/components/colunasDataTableCidade.xhtml">
+
 		</util:pesquisa>
-		
-	
-		
+
+
+
 	</ui:define>
 </ui:composition>
 </html>

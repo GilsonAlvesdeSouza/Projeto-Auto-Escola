@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
-import org.omnifaces.util.Messages;
 import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -70,7 +69,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	@Override
 	public String save() throws Exception {
 		cidade = cidadeController.merge(cidade);
-		Messages.addGlobalInfo("Dados salvo com sucesso!");
+		sucesso();
 		novo();
 		getCidade();
 		return url;
@@ -81,7 +80,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 		cidade = cidadeController.merge(cidade);
 		novo();
 		cidades.add(cidade);
-		Messages.addGlobalInfo("Dados salvo com sucesso!");
+		sucesso();
 	}
 
 	@Override
@@ -102,7 +101,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 		cidadeController.delete(cidade);
 		cidades.remove(cidade);
 		novo();
-		Messages.addGlobalInfo("Cidade excluida com sucesso!");
+		sucesso();
 	}
 
 	@Override
@@ -119,6 +118,11 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	@Override
 	protected InterfaceCrud<Cidade> getController() {
 		return cidadeController;
+	}
+
+	@Override
+	public void consultarEntidade() throws Exception {
+		super.consultarEntidade();
 	}
 
 }
