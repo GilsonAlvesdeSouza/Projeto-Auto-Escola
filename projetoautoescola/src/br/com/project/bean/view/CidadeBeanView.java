@@ -1,8 +1,5 @@
 package br.com.project.bean.view;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 
 import org.primefaces.model.StreamedContent;
@@ -12,6 +9,7 @@ import org.springframework.stereotype.Controller;
 
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
+import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.geral.controller.CidadeController;
 import br.com.project.model.classes.Cidade;
 
@@ -23,7 +21,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 
 	private static final long serialVersionUID = 1L;
 	private Cidade cidade = new Cidade();
-	private List<Cidade> cidades = new ArrayList<>();
+	private CarregamentoLazyListForObject<Cidade> cidades = new CarregamentoLazyListForObject<Cidade>();
 	private String url = "/cadastro/cad_cidade.jsf?faces-redirect=true";
 	private String urlFind = "/cadastro/find_cidade.jsf?faces-redirect=true";
 	@Autowired
@@ -37,8 +35,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 		this.cidade = cidade;
 	}
 
-	public List<Cidade> getCidades() throws Exception {
-		cidades = cidadeController.getListCidade();
+	public CarregamentoLazyListForObject<Cidade> getCidades() throws Exception {
 		return cidades;
 	}
 
@@ -50,10 +47,6 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 		return super.getArquivoReport();
 	}
 
-	public void setCidades(List<Cidade> cidades) {
-		this.cidades = cidades;
-	}
-
 	@Override
 	public String novo() throws Exception {
 		setarVariaveisNulas();
@@ -62,7 +55,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public void setarVariaveisNulas() throws Exception {
-		cidades.clear();
+		cidades.getList().clear();
 		cidade = new Cidade();
 	}
 
@@ -78,8 +71,8 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	@Override
 	public void saveNotReturn() throws Exception {
 		cidade = cidadeController.merge(cidade);
-		novo();
 		cidades.add(cidade);
+		cidade = new Cidade();
 		sucesso();
 	}
 
@@ -91,7 +84,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public String editar() throws Exception {
-		cidades.clear();
+		cidades.getList().clear();
 		return url;
 	}
 
@@ -122,7 +115,14 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public void consultarEntidade() throws Exception {
-		super.consultarEntidade();
+		cidade = new Cidade();
+		cidades.clean();
+		cidades.setTotalResgistroConsulta(super.totalRegistroConsulta(), super.getSqlLazyQuery());
 	}
 
+	@Override
+	public String condicaoAndParaPesquisa() throws Exception {
+		// TODO Auto-generated method stub
+		return "";
+	}
 }

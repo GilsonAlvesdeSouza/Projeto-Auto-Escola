@@ -65,10 +65,10 @@
 
 		<p:panel style="text-align: center" header="Listagem de Cidades"
 			id="painelTable">
-			<p:dataTable id="tableResult" value="#{cidadeBeanView.cidades}"
+			<p:dataTable id="tableResult" value="#{cidadeBeanView.cidades.list}"
 				var="cidade" rows="10" paginatorPosition="bottom" paginator="true"
 				emptyMessage="Não existem valores para exibição."
-				rendered="#{cidadeBeanView.cidades.size() >= 0}"
+				rendered="#{cidadeBeanView.cidades.list.size() >= 0}"
 				paginatorTemplate=" {FirstPageLink}
 								   {PreviousPageLink} {PageLinks} 
 	 							   {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
